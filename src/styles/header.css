@@ -1,0 +1,368 @@
+/* header.css - Header moderno y premium para Mueblería */
+
+/* Barra de navegación */
+.header {
+  background: #5B4636;
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(91, 70, 54, 0.3);
+  position: relative;
+  z-index: 1000;
+}
+
+/* Contenedor principal */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+/* Logo y texto */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1001;
+}
+
+.logo {
+  height: 3rem;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.company-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  display: block;
+}
+
+.company-tagline {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #F5F1EB;
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* Botón hamburguesa para móvil */
+.mobile-menu-button {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1002;
+}
+
+.hamburger {
+  width: 25px;
+  height: 3px;
+  background-color: #FFFFFF;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.hamburger.active:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Navegación Desktop */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+
+.menu li a:hover {
+  color: #7A8F5A;
+}
+
+/* Selector de idioma Desktop */
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.language-label {
+  font-weight: 600;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+}
+
+.language-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.language-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #7A8F5A;
+}
+
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #5B4636;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #FFFFFF;
+}
+
+.language-option:hover {
+  background-color: rgba(122, 143, 90, 0.3);
+}
+
+/* Navegación Móvil */
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #5B4636;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.mobile-nav.open {
+  display: block;
+}
+
+.mobile-menu {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.mobile-menu li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu li:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu li a {
+  display: block;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.mobile-menu li a:hover {
+  background-color: rgba(122, 143, 90, 0.3);
+  color: #7A8F5A;
+}
+
+/* Selector de idioma Móvil */
+.mobile-language-selector {
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mobile-language-selector .language-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.language-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.language-option-mobile {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.language-option-mobile:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.language-option-mobile.active {
+  background-color: #7A8F5A;
+  border-color: #7A8F5A;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 1rem;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+  
+  .mobile-menu-button {
+    display: flex;
+    flex-shrink: 0;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .logo-container {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .company-name {
+    font-size: 1.1rem;
+  }
+  
+  .logo {
+    height: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  .company-text {
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+  
+  .logo-container {
+    gap: 0.5rem;
+  }
+  
+  .company-name {
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+  
+  .company-tagline {
+    font-size: 0.75rem;
+  }
+  
+  .logo {
+    height: 2rem;
+    flex-shrink: 0;
+  }
+  
+  .company-text {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .mobile-menu-button {
+    padding: 0.25rem;
+  }
+  
+  .hamburger {
+    width: 20px;
+    height: 2px;
+  }
+  
+  .mobile-menu li a {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .mobile-language-selector {
+    padding: 0.75rem 1rem;
+  }
+
+  .language-option-mobile {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
