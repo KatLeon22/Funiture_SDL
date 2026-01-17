@@ -41,11 +41,6 @@ const FurnitureItems = ({ userLang }) => {
   const items = subcategory.items || [];
 
   const handleWhatsAppClick = (item, itemIndex) => {
-    const currentImageIndex = getImageIndex(itemIndex);
-    const imageUrl = item.images && item.images.length > 0 
-      ? `${window.location.origin}${item.images[currentImageIndex] || item.images[0]}`
-      : '';
-    
     // URL de la página del producto
     const productPageUrl = `${window.location.origin}/collection/${collectionId}/${subcategoryId}`;
     
@@ -57,12 +52,6 @@ const FurnitureItems = ({ userLang }) => {
     message += userLang === "es" 
       ? `\n\nVer producto: ${productPageUrl}`
       : `\n\nView product: ${productPageUrl}`;
-    
-    if (imageUrl) {
-      message += userLang === "es" 
-        ? `\n\nImagen: ${imageUrl}`
-        : `\n\nImage: ${imageUrl}`;
-    }
     
     if (item.characteristics && item.characteristics.length > 0) {
       message += userLang === "es" ? `\n\nCaracterísticas:` : `\n\nCharacteristics:`;
