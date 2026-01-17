@@ -22,11 +22,14 @@ function PageTracker() {
 }
 
 function App() {
-  // Detectar idioma del navegador automáticamente
-  const [userLang, setUserLang] = useState('es'); // Español por defecto
+  // Idioma por defecto: Inglés
+  const [userLang, setUserLang] = useState('en'); // Inglés por defecto
 
   useEffect(() => {
-    const lang = navigator.language.startsWith('en') ? 'en' : 'es';
+    // Detectar idioma del navegador, pero mantener inglés como predeterminado
+    const browserLang = navigator.language.toLowerCase();
+    // Solo cambiar a español si el navegador está explícitamente en español
+    const lang = browserLang.startsWith('es') ? 'es' : 'en';
     setUserLang(lang);
   }, []);
 
