@@ -50,7 +50,10 @@ const Contact = ({ userLang }) => {
       }
 
     } catch (error) {
-      console.error('Error al enviar el correo:', error);
+      // Error al enviar el correo
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Error al enviar el correo:', error);
+      }
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

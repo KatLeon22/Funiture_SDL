@@ -3,6 +3,7 @@ import React from "react";
 import "../styles/footer.css"; // Estilos específicos del footer
 import { Link } from "react-router-dom";
 import { translations } from '../utils/translations';
+import logo from "../assets/FurniLogo.jpg";
 
 const Footer = ({ userLang }) => {
   const t = translations[userLang];
@@ -13,8 +14,7 @@ const Footer = ({ userLang }) => {
         
         {/* Logo - izquierda */}
         <div className="footer-logo">
-          <img src={require("../assets/FurniLogo.jpg")} alt="Mueblería Logo" className="logo" />
-          <span className="logo-text"></span>
+          <img src={logo} alt="Mueblería Logo" className="logo" />
         </div>
 
         {/* Contacto - centro */}
@@ -30,7 +30,7 @@ const Footer = ({ userLang }) => {
         <div className="footer-links">
           <ul>
             <li><Link to="/">{t.nav.home}</Link></li>
-            <li><Link to="/">{t.nav.collections}</Link></li>
+            <li><Link to="/collections">{t.nav.collections}</Link></li>
           </ul>
         </div>
 
