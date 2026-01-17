@@ -1,8 +1,8 @@
 //quienes somos
 import React from "react";
 import "../styles/aboutUs.css"; // Asegúrate de crear este archivo CSS
-import Img1 from "../assets/F13.jpeg";
-import Img2 from "../assets/F6 .jpeg";
+// import Img1 from "../assets/F13.jpeg";
+// import Img2 from "../assets/F6 .jpeg";
 
 const content = {
   es: {
@@ -17,6 +17,7 @@ const content = {
       "Ser reconocidos en Guatemala como líderes en logística, destacando por innovación y compromiso con la satisfacción del cliente.",
     valuesTitle: "Valores",
     values: ["Puntualidad", "Confianza", "Innovación", "Servicio al cliente"],
+    photosTitle: "Galería",
   },
   en: {
     title: "About Us",
@@ -30,6 +31,7 @@ const content = {
       "Be recognized in Guatemala as a logistics leader, standing out for innovation and customer commitment.",
     valuesTitle: "Values",
     values: ["Punctuality", "Trust", "Innovation", "Customer Service"],
+    photosTitle: "Gallery",
   },
 };
 
@@ -64,13 +66,12 @@ const AboutUs = ({ userLang }) => {
         </div>
       </div>
 
-
-         {/* Sección de fotos */}
-            <h3 className="services-photos-title">{text.photosTitle}</h3>
+      {/* Sección de fotos - Comentada hasta que las imágenes estén disponibles */}
+      {/* <h3 className="services-photos-title">{text.photosTitle}</h3>
             <div className="services-photos">
               <img src={Img1} alt="Servicio 1" className="service-photo" />
               <img src={Img2} alt="Servicio 2" className="service-photo" />
-            </div>
+            </div> */}
       
     </section>
   );

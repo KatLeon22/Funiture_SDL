@@ -4,13 +4,17 @@ import "../styles/location.css"; // Asegúrate de crear este CSS
 const content = {
   es: {
     title: "Ubicación",
-   
-   
+    intro: "Encuéntranos en nuestra ubicación",
+    address: "Dirección: Guatemala",
+    phone: "Teléfono: +502 5117-2443",
+    email: "Email: contacto@muebleria.com",
   },
   en: {
     title: "Location",
-    
-   
+    intro: "Find us at our location",
+    address: "Address: Guatemala",
+    phone: "Phone: +502 5117-2443",
+    email: "Email: contacto@muebleria.com",
   },
 };
 

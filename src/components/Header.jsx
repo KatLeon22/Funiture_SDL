@@ -59,8 +59,7 @@ const Header = ({ lang, setLang }) => {
             <img src={logo} alt="Logotipo" className="logo" />
           </Link>
           <div className="company-text">
-            <span className="company-name"></span> {/* nombre del logo*/}
-            <span className="company-tagline"></span>
+            {/* nombre del logo - oculto por ahora */}
           </div>
         </div>
 

@@ -14,10 +14,6 @@ const Home = ({ userLang }) => {
   const navigate = useNavigate();
   const t = translations[userLang];
 
-  const handleViewCatalog = () => {
-    navigate("/collections");
-  };
-
   // Mapeo de iconos igual que en Collections
   const collectionIcons = {
     bedroom: <FaBed size={50} />,
