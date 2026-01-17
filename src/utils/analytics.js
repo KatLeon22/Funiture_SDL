@@ -21,6 +21,10 @@ export const initGA = () => {
     gtag('config', GA_TRACKING_ID, {
       page_title: document.title,
       page_location: window.location.href,
+      // Configuración para San Francisco, California
+      // Google Analytics detecta automáticamente la ubicación geográfica del usuario
+      // Las vistas desde San Francisco, California se registrarán automáticamente
+      send_page_view: true,
     });
   }
 };
@@ -32,6 +36,8 @@ export const trackPageView = (url) => {
       page_path: url,
       page_title: document.title,
       page_location: window.location.href,
+      // Google Analytics detecta automáticamente la ubicación geográfica
+      // Las vistas desde San Francisco, California se registrarán automáticamente
     });
   }
 };

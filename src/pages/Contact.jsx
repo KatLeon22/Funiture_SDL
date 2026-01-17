@@ -69,8 +69,9 @@ const Contact = ({ userLang }) => {
       message: "Mensaje",
       submit: "Enviar",
       infoTitle: "Nuestra información",
-      phone: "Teléfono: +502 4796 7384",
+      phone: "Teléfono: +1 (415) 555-0123",
       emailContact: "Email: contacto@muebleria.com",
+      address: "Dirección: San Francisco, California, Estados Unidos",
       footerNote: "Será un gusto atenderte",
       whatsappTitle: "O contáctanos por WhatsApp",
       whatsappBtn: "Abrir WhatsApp",
@@ -83,8 +84,9 @@ const Contact = ({ userLang }) => {
       message: "Message",
       submit: "Send",
       infoTitle: "Our Information",
-      phone: "Phone: +502 4796 7384",
+      phone: "Phone: +1 (415) 555-0123",
       emailContact: "Email: contacto@muebleria.com",
+      address: "Address: San Francisco, California, United States",
       footerNote: "We will be happy to assist you",
       whatsappTitle: "Or contact us via WhatsApp",
       whatsappBtn: "Open WhatsApp",
@@ -154,6 +156,7 @@ const Contact = ({ userLang }) => {
           {/* Información de contacto */}
           <div className="contact-card info-card">
             <h3>{text.infoTitle}</h3>
+            <p className="address">{text.address}</p>
             <p className="phone">{text.phone}</p>
             <p className="email">{text.emailContact}</p>
             <p className="footer-note">{text.footerNote}</p>
