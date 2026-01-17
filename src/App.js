@@ -28,11 +28,8 @@ function App() {
   const [userLang, setUserLang] = useState('en'); // Inglés por defecto
 
   useEffect(() => {
-    // Detectar idioma del navegador, pero mantener inglés como predeterminado
-    const browserLang = navigator.language.toLowerCase();
-    // Solo cambiar a español si el navegador está explícitamente en español
-    const lang = browserLang.startsWith('es') ? 'es' : 'en';
-    setUserLang(lang);
+    // Siempre usar inglés como idioma por defecto, sin importar el idioma del navegador
+    setUserLang('en');
   }, []);
 
   return (

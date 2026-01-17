@@ -177,7 +177,6 @@ const Header = ({ lang, setLang }) => {
                 </div>
               )}
             </li>
-            <li><Link to="/contact">{t.nav.contact}</Link></li>
           </ul>
 
           {/* Selector de idioma Desktop */}
@@ -300,7 +299,6 @@ const Header = ({ lang, setLang }) => {
                 </div>
               )}
             </li>
-            <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{t.nav.contact}</Link></li>
           </ul>
 
           {/* Selector de idioma Móvil */}
