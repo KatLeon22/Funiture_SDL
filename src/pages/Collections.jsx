@@ -31,8 +31,13 @@ const Collections = ({ userLang }) => {
     navigate(`/collection/${collectionId}`);
   };
 
-  const handleDropdownToggle = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const handleDropdownToggle = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    // Solo toggle con click explícito - no con hover
+    setIsDropdownOpen(prev => !prev);
   };
 
   const handleCollectionSelect = (collectionId) => {
@@ -45,18 +50,26 @@ const Collections = ({ userLang }) => {
 
   // Cerrar dropdown al hacer click fuera
   useEffect(() => {
+    if (!isDropdownOpen) return;
+
     const handleClickOutside = (event) => {
+      // Solo cerrar si el click es fuera del contenedor del dropdown
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
       }
     };
 
-    if (isDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
+    // Reducir delay para mejor respuesta en móviles
+    const timeoutId = setTimeout(() => {
+      // Usar tanto click como touchstart para móviles
+      document.addEventListener('click', handleClickOutside, true);
+      document.addEventListener('touchend', handleClickOutside, true);
+    }, 50);
+    
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      clearTimeout(timeoutId);
+      document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener('touchend', handleClickOutside, true);
     };
   }, [isDropdownOpen]);
 
@@ -77,15 +90,24 @@ const Collections = ({ userLang }) => {
         
         {/* Combobox personalizado para seleccionar colección */}
         <div className="collections-combobox-container" ref={dropdownRef}>
-          <div 
+          <button
+            type="button"
             className="collections-combobox"
             onClick={handleDropdownToggle}
+            onTouchEnd={(e) => {
+              // Prevenir que el touch se propague y cause problemas
+              e.stopPropagation();
+            }}
           >
             <span className="combobox-selected-text">{selectedCollectionName}</span>
             <span className={`combobox-arrow ${isDropdownOpen ? 'open' : ''}`}>&#9662;</span>
-          </div>
+          </button>
           {isDropdownOpen && (
             <div 
+              className="collections-dropdown-menu"
+              onClick={(e) => e.stopPropagation()} // Prevenir que clicks dentro cierren el dropdown
+              onTouchStart={(e) => e.stopPropagation()} // Prevenir que toques cierren el dropdown
+              onTouchEnd={(e) => e.stopPropagation()} // Prevenir que toques cierren el dropdown
               style={{ 
                 backgroundColor: '#FFFFFF', 
                 zIndex: 9999,
@@ -109,7 +131,14 @@ const Collections = ({ userLang }) => {
                     <button
                       key={collection.id}
                       type="button"
-                      onClick={() => handleCollectionSelect(collection.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCollectionSelect(collection.id);
+                      }}
+                      onTouchEnd={(e) => {
+                        e.stopPropagation();
+                        handleCollectionSelect(collection.id);
+                      }}
                       style={{
                         color: '#000000',
                         WebkitTextFillColor: '#000000',

@@ -68,11 +68,33 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  /* Estilos de botón */
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: left;
+  /* Mejorar respuesta táctil en móviles */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .collections-combobox:hover {
   background: rgba(0, 0, 0, 0.08);
   border-color: rgba(0, 0, 0, 0.15);
+  /* Asegurar que hover solo cambie estilos, no abra el dropdown */
+  pointer-events: auto;
+}
+
+.collections-combobox:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.2);
+  outline-offset: 2px;
+}
+
+.collections-combobox:active {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .combobox-selected-text {
@@ -143,6 +165,11 @@
   opacity: 1 !important;
   -webkit-text-fill-color: rgb(0, 0, 0) !important;
   text-fill-color: rgb(0, 0, 0) !important;
+  /* Mejorar respuesta táctil en móviles */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .collections-dropdown-menu > div,
