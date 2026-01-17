@@ -26,6 +26,15 @@ const Header = ({ lang, setLang }) => {
   // Cerrar dropdowns al hacer click fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
+      // Verificar si el click es en un link de colección (permitir navegación)
+      const isCollectionLink = event.target.closest('.mobile-collection-item') || 
+                               event.target.closest('.collection-dropdown-item');
+      
+      if (isCollectionLink) {
+        // Si es un link de colección, no cerrar - dejar que el onClick del link maneje el cierre
+        return;
+      }
+      
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setOpen(false);
       }
@@ -34,12 +43,12 @@ const Header = ({ lang, setLang }) => {
       }
     };
 
-    // Usar 'click' en lugar de 'mousedown' para mejor control
+    // Usar 'click' con un delay más largo para móviles
     if (open || collectionsOpen) {
       const timeoutId = setTimeout(() => {
         document.addEventListener('click', handleClickOutside, true);
         document.addEventListener('touchend', handleClickOutside, true);
-      }, 50);
+      }, 200);
       
       return () => {
         clearTimeout(timeoutId);
@@ -108,8 +117,18 @@ const Header = ({ lang, setLang }) => {
                 <div 
                   className="collections-dropdown" 
                   style={{ backgroundColor: '#FFFFFF' }}
-                  onClick={(e) => e.stopPropagation()}
-                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    // Solo prevenir propagación si no es un link
+                    if (!e.target.closest('.collection-dropdown-item')) {
+                      e.stopPropagation();
+                    }
+                  }}
+                  onMouseDown={(e) => {
+                    // Solo prevenir propagación si no es un link
+                    if (!e.target.closest('.collection-dropdown-item')) {
+                      e.stopPropagation();
+                    }
+                  }}
                 >
                   {collections.map((collection) => {
                     const hasSubcategories = collection.subcategories && collection.subcategories.length > 0;
@@ -121,8 +140,15 @@ const Header = ({ lang, setLang }) => {
                         to={hasSubcategories ? `/collection/${collection.id}` : "/collections"}
                         className="collection-dropdown-item"
                         onClick={(e) => {
+                          // Permitir que la navegación ocurra primero
+                          // Cerrar el dropdown después de un pequeño delay para permitir la navegación
+                          setTimeout(() => {
+                            setCollectionsOpen(false);
+                          }, 200);
+                        }}
+                        onMouseDown={(e) => {
+                          // Prevenir que mousedown interfiera con la navegación
                           e.stopPropagation();
-                          setCollectionsOpen(false);
                         }}
                         style={{
                           color: '#000000',
@@ -214,7 +240,24 @@ const Header = ({ lang, setLang }) => {
               {collectionsOpen && (
                 <div 
                   className="mobile-collections-dropdown"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    // Solo prevenir propagación si no es un link
+                    if (!e.target.closest('.mobile-collection-item')) {
+                      e.stopPropagation();
+                    }
+                  }}
+                  onTouchStart={(e) => {
+                    // Solo prevenir propagación si no es un link
+                    if (!e.target.closest('.mobile-collection-item')) {
+                      e.stopPropagation();
+                    }
+                  }}
+                  onTouchEnd={(e) => {
+                    // Solo prevenir propagación si no es un link
+                    if (!e.target.closest('.mobile-collection-item')) {
+                      e.stopPropagation();
+                    }
+                  }}
                 >
                   {collections.map((collection) => {
                     const hasSubcategories = collection.subcategories && collection.subcategories.length > 0;
@@ -226,14 +269,28 @@ const Header = ({ lang, setLang }) => {
                         to={hasSubcategories ? `/collection/${collection.id}` : "/collections"}
                         className="mobile-collection-item"
                         onClick={(e) => {
-                          e.stopPropagation();
-                          setCollectionsOpen(false);
-                          setMobileMenuOpen(false);
+                          // No prevenir el comportamiento por defecto - permitir navegación
+                          // Cerrar los menús después de un delay más largo para permitir navegación
+                          setTimeout(() => {
+                            setCollectionsOpen(false);
+                            setMobileMenuOpen(false);
+                          }, 300);
+                        }}
+                        onTouchStart={(e) => {
+                          // No prevenir el touch para permitir navegación
+                        }}
+                        onTouchEnd={(e) => {
+                          // No prevenir el touch para permitir navegación
+                        }}
+                        onMouseDown={(e) => {
+                          // No prevenir mousedown para permitir navegación
                         }}
                         style={{
                           color: '#FFFFFF',
                           display: 'block',
-                          textDecoration: 'none'
+                          textDecoration: 'none',
+                          WebkitTapHighlightColor: 'rgba(255, 255, 255, 0.2)',
+                          touchAction: 'manipulation'
                         }}
                       >
                         {collectionName}
